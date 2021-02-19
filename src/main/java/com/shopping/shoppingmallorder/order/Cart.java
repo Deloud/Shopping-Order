@@ -35,9 +35,9 @@ public class Cart {
     @GeneratedValue
     private Integer order_id;
 
-//    //1대 다 속성 주기
-//    @OneToMany(mappedBy = "cart")
-//    private List<Product> products;
+    //1대 다 속성 주기
+    @OneToMany(mappedBy = "cart")
+    private List<Product> products;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore

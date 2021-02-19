@@ -51,10 +51,25 @@ public class OrderJpaController {
             throw new PurchaseNotFoundException(String.format("ID[%s} not found", id));
         }
 
+        List<Cart> oldcart = purchase.get().getCarts();
+        Cart selected = null;
+        for(int j=0; j<oldcart.size(); j++){
+            if (oldcart.get(j).getId() == id){
+                selected = oldcart.get(j);
+            }
+        }
+
         //---
         Cart cart = restTemplate.getForObject("http://localhost:8091/".concat(Integer.toString(id)), Cart.class);
         cart.setPurchase(purchase.get());
         cart.setId(id);
+        //product추가부분 실패
+        List<Product> test = cart.getProducts();
+        for (int i =0; i<test.size(); i++){
+            test.get(i).setCart(selected);
+//            System.out.println(test.get(i).getCart()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+//        System.out.println(cart.getProducts()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         if (cart.getTotal_price() != 0){
             cartRepository.save(cart);
         }
