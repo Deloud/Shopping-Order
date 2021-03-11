@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 public class WhenGetOrderTest {
     @Rule
-    public PactProviderRuleMk2 provider = new PactProviderRuleMk2("cartservice", "localhost", 8088, this);
+    public PactProviderRuleMk2 provider = new PactProviderRuleMk2("cartservice", "localhost", 8089, this);
 
     // pact 정의
     @Pact(consumer = "orderservice")
@@ -33,6 +33,10 @@ public class WhenGetOrderTest {
         DslPart userResults = new PactDslJsonBody()
                 .integerType("id",1)
                 .integerType("totalprice",0)
+                .object("product_list")
+//                    .integerType("1",3)
+                .closeObject()
+
                 .asBody();
 
 

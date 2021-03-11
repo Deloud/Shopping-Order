@@ -19,6 +19,9 @@
                 },
                 "body": {
                     "id": 1,
+                    "product_list": {
+                        
+                    },
                     "totalprice": 0
                 },
                 "matchingRules": {
