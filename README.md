@@ -2,7 +2,6 @@
 
 MSA 구조에서의 RESTful API - **shopping order** 주문 서비스 🚛  <br>
 
-
 ## Setting
 
 Pact broker 설치
